@@ -1,0 +1,137 @@
+<html><head>
+    <title>Universe Player Data Search</title>
+
+    <style>
+        :root {
+            --border: 12px;
+            --offset: -12px;
+        }
+
+        body {
+            background: #181818;
+            color: #DEF;
+            font-family: Roboto, sans-serif;
+        }
+
+        h1 {
+            color: #000;
+            Font-weight: 100;
+            text-transform: uppercase;
+            font-size: 48px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        table {
+            width: auto;
+        }
+
+        .container {
+            background: #333;
+            width: 90%;
+            padding: var(--border);
+            border-radius: var(--border);
+            margin: 0 auto;
+        }
+
+        .data {
+            float: left;
+            width: 33%;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        footer {
+            width: 100%;
+            text-align: left;
+            font-size: 12px;
+            clear: both;
+        }
+
+        .hlabel {
+            text-align: center;
+            padding-right: 10px;
+        }
+
+        .label {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .value {
+            font-weight: bold;
+            padding-left: 10px;
+        }
+
+        .container .top {
+            background: #F77825;
+            padding: var(--border);
+            border-radius: var(--border) var(--border) 0 0;
+            margin-right: var(--offset);
+            margin-left: var(--offset);
+            margin-top: var(--offset);
+            text-align: center;
+            padding: 10px;
+            border-bottom: 10px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <h1>Universe Player Data Search</h1>
+        </div>
+
+        <!-- <p>Place your crap <i>HERE</i></p> -->
+
+        <div class="selectuni">
+        </div>
+        <div>
+            <div class="data">
+                <h2>Universe Server Settings</h2>
+                <div class="serverdata">
+
+                    <!-- Button to fetch 'a' status players (admins) -->
+                    <button id="fetchserverdataButton">Fetch Server Settings</button>
+
+                </div>
+            </div>
+
+            <div class="data">
+                <h2>Universe Admin Search</h2>
+                <div class="admins">
+
+                    <!-- Button to fetch 'a' status players (admins) -->
+                    <button id="fetchAdminsButton">Fetch Admins</button>
+
+                </div>
+            </div>
+
+            <div class="data">
+                <h2>Universe Banned Player Search</h2>
+                <div class="banned">
+                    <!-- Button to fetch 'b' status players (banned) -->
+                    <button id="fetchBannedButton">Fetch Banned Players</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <footer>
+            <p>
+                Created by Xante
+            </p>
+        </footer>
+
+    </div>
+
+
+</body></html>
