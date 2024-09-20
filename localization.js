@@ -1,5 +1,3 @@
-// localization.js
-
 const translations = {
     'en': {
         'pid': 'Player ID',
@@ -10,7 +8,9 @@ const translations = {
         'selectedLifeformsTxt': 'Selected',
         'researchQueueTxt': 'Research in progress',
         'fleetQueueTxt': 'Construction queue - Fleets',
-        'buildingQueueTxt': 'Construction queue - buildings'
+        'buildingQueueTxt': 'Construction queue - buildings',
+        'activity': 'Activity',
+        'countedTicks': 'Counted Ticks'
     },
     'de': {
         'pid': 'Player ID',
@@ -21,7 +21,9 @@ const translations = {
         'selectedLifeformsTxt': 'Ausgewählt',
         'researchQueueTxt': 'Laufende Forschung',
         'fleetQueueTxt': 'Bauliste - Flotten',
-        'buildingQueueTxt': 'Bauliste - Gebäude'
+        'buildingQueueTxt': 'Bauliste - Gebäude',
+        'activity': 'Aktivität',
+        'countedTicks': 'Gezählte Ticks'
     },
     'fr': {
         'pid': 'ID du joueur',
@@ -32,7 +34,9 @@ const translations = {
         'selectedLifeformsTxt': 'Sélectionné',
         'researchQueueTxt': 'Recherche en cours',
         'fleetQueueTxt': 'Liste de construction - Flottes',
-        'buildingQueueTxt': 'Liste de construction - Bâtiments'
+        'buildingQueueTxt': 'Liste de construction - Bâtiments',
+        'activity': 'Activité',
+        'countedTicks': 'Ticks comptés'
     },
     'es': {
         'pid': 'ID del jugador',
@@ -43,7 +47,9 @@ const translations = {
         'selectedLifeformsTxt': 'Selección',
         'researchQueueTxt': 'Investigación en curso',
         'fleetQueueTxt': 'Cola de construcción - Escuadrón',
-        'buildingQueueTxt': 'Cola de construcción - Edificios'
+        'buildingQueueTxt': 'Cola de construcción - Edificios',
+        'activity': 'Actividad',
+        'countedTicks': 'Ticks contados'
     },
     'it': {
         'pid': 'ID giocatore',
@@ -54,9 +60,12 @@ const translations = {
         'selectedLifeformsTxt': 'Selezionata',
         'researchQueueTxt': 'Ricerca in corso',
         'fleetQueueTxt': 'Coda costruzione - Flotte',
-        'buildingQueueTxt': 'Coda costruzione - Strutture'
+        'buildingQueueTxt': 'Coda costruzione - Strutture',
+        'activity': 'Attività',
+        'countedTicks': 'Ticks contati'
     }
 };
+
 
 // Function to get translations based on language
 function getTranslation(key, locale) {
