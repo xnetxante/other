@@ -95,8 +95,8 @@ const translations = {
         'pip': 'Adresă IP',
         'pscore': 'Puncte',
         'pvmode': 'Mod vacanță',
-        'selectedLifeformsTxt': 'Selectat',
-        'researchQueueTxt': 'Cercetare în curs',
+        'selectedLifeformsTxt': 'Teh. Forme de viață ',
+        'researchQueueTxt': 'Cercetare în desfăşurare',
         'fleetQueueTxt': 'Coada de construcție - Flote',
         'buildingQueueTxt': 'Coada de construcție - Clădiri'
     },
