@@ -85,7 +85,7 @@ const translations = {
         'pscore': 'Punkty',
         'pvmode': 'Dynç alyş reimi',
         'selectedLifeformsTxt': 'Gözleýän',
-        'researchQueueTxt': 'Gözleýän gözleg',
+        'researchQueueTxt': 'Cercetare în desfăşurare',
         'fleetQueueTxt': 'Gurluşy ýazgy - Flotlar',
         'buildingQueueTxt': 'Gurluşy ýazgy - Binalar'
     },
@@ -95,10 +95,10 @@ const translations = {
         'pip': 'Adresă IP',
         'pscore': 'Puncte',
         'pvmode': 'Mod vacanță',
-        'selectedLifeformsTxt': 'Teh. Forme de viață ',
+        'selectedLifeformsTxt': 'Selectat',
         'researchQueueTxt': 'Cercetare în desfăşurare',
-        'fleetQueueTxt': 'Coada de construcție - Flote',
-        'buildingQueueTxt': 'Coada de construcție - Clădiri'
+        'fleetQueueTxt': 'Lista construcţiilor - Flote',
+        'buildingQueueTxt': 'Lista construcţiilor - cladiri'
     },
     'ru': {
         'pid': 'ID игрока',
