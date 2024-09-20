@@ -9,6 +9,7 @@ const translations = {
         'researchQueueTxt': 'Research in progress',
         'fleetQueueTxt': 'Construction queue - Fleets',
         'buildingQueueTxt': 'Construction queue - buildings',
+        'date': 'Date',
         'activity': 'Activity',
         'countedTicks': 'Counted Ticks'
     },
@@ -22,6 +23,7 @@ const translations = {
         'researchQueueTxt': 'Laufende Forschung',
         'fleetQueueTxt': 'Bauliste - Flotten',
         'buildingQueueTxt': 'Bauliste - Gebäude',
+        'date': 'Datum',
         'activity': 'Aktivität',
         'countedTicks': 'Gezählte Ticks'
     },
@@ -35,6 +37,7 @@ const translations = {
         'researchQueueTxt': 'Recherche en cours',
         'fleetQueueTxt': 'Liste de construction - Flottes',
         'buildingQueueTxt': 'Liste de construction - Bâtiments',
+        'date': 'Date',
         'activity': 'Activité',
         'countedTicks': 'Ticks comptés'
     },
@@ -48,6 +51,7 @@ const translations = {
         'researchQueueTxt': 'Investigación en curso',
         'fleetQueueTxt': 'Cola de construcción - Escuadrón',
         'buildingQueueTxt': 'Cola de construcción - Edificios',
+        'date': 'Fecha',
         'activity': 'Actividad',
         'countedTicks': 'Ticks contados'
     },
@@ -61,10 +65,12 @@ const translations = {
         'researchQueueTxt': 'Ricerca in corso',
         'fleetQueueTxt': 'Coda costruzione - Flotte',
         'buildingQueueTxt': 'Coda costruzione - Strutture',
+        'date': 'Data',
         'activity': 'Attività',
         'countedTicks': 'Ticks contati'
     }
 };
+
 
 
 // Function to get translations based on language
