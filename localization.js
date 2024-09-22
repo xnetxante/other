@@ -1,8 +1,8 @@
 var requirelocale = window.location.href.match(/-(\w+)\./)[1];
 const selectElement = document.querySelector('select');
 if (selectElement) {
-const selectedOption = selectElement.options[selectElement.selectedIndex];
-const selectedLang = selectedOption.value; // Get selectedLang
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    const selectedLang = selectedOption.value; // Get selectedLang
 }
 
 const keytrans = {
@@ -237,7 +237,7 @@ const translations = {
 
 // Function to get translations based on language
 function getTranslation(key, locale) {
-if (!locale) locale = requirelocale
+    if (!locale) locale = requirelocale
     if (translations[locale] && translations[locale][key]) {
         return translations[locale][key];
     } else if (translations['en'][key]) { // Fallback to English
