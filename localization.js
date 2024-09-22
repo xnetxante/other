@@ -1,7 +1,9 @@
 var requirelocale = window.location.href.match(/-(\w+)\./)[1];
 const selectElement = document.querySelector('select');
+if (selectElement) {
 const selectedOption = selectElement.options[selectElement.selectedIndex];
 const selectedLang = selectedOption.value; // Get selectedLang
+}
 
 const keytrans = {
     'en': {
