@@ -1,11 +1,35 @@
-var requirelocale = window.location.href.match(/-(\w+)\./)[1];
-const selectElement = document.querySelector('select');
-if (selectElement) {
-    const selectedOption = selectElement.options[selectElement.selectedIndex];
-    const selectedLang = selectedOption.value; // Get selectedLang
+/* Variables */ {
+    var ShowlngLog = false;
+    var selectElement = document.querySelector('select');
+    var requirelocale = window.location.href.match(/-(\w+)\./)[1];
+    var storedLang = localStorage.getItem('selectedLang');
+    var selectedLang;
+
+    if (ShowlngLog) console.log('Initial Check of requirelocale:', requirelocale);
+    if (ShowlngLog) console.log('Initial Check of storedLang:', storedLang);
+
+    // Check if the <select> element is available
+    if (selectElement) {
+        let selectedOption = selectElement.querySelector('option[selected="selected"]') ||
+            selectElement.options[selectElement.selectedIndex];
+        selectedLang = selectedOption ? selectedOption.value : null;
+
+        // Update localStorage if necessary
+        if (storedLang !== selectedLang) {
+            localStorage.setItem('selectedLang', selectedLang);
+            if (ShowlngLog) console.log(`Language stored: ${selectedLang}`);
+        }
+    }
+    else selectedLang = storedLang;
+
+
+    // Reset handling
+    if (selectedLang === "reset") selectedLang = null;
+    if (ShowlngLog) console.log('Final Check of selectedLang:', selectedLang);
 }
 
-const keytrans = {
+
+const playerkeys = {
     'en': {
         'pid': 'Player ID', // Player ID
         'ally': 'Alliance', // Alliance
@@ -41,22 +65,41 @@ const keytrans = {
         'date': 'Date', // Date
         'countedTicks': 'Counted Ticks', // Counted Ticks
         'activity': 'Activity' // Activity
-    },
-    'de': {
-        'pid': 'Player ID',
-        'plogin': 'Letzter Login',
-        'pip': 'IP Adresse',
-        'pscore': 'Punkte',
-        'pvmode': 'Urlaubsmodus',
-        'selectedLifeformsTxt': 'Ausgewählt',
-        'researchQueueTxt': 'Laufende Forschung',
-        'fleetQueueTxt': 'Bauliste - Flotten',
-        'buildingQueueTxt': 'Bauliste - Gebäude',
-        'date': 'Datum',
-        'activity': 'Aktivität',
-        'countedTicks': 'Gezählte Ticks'
-    },
-    'fr': {
+    }, 'de': {
+        'pid': 'Player ID', // Player ID
+        'ally': 'Allianz', // Alliance
+        'class': 'Klassenauswahl', // Class Selection
+        'email': 'Email', // Email
+        'emailchg': 'Email geändert', // email address changed
+        'plang': 'Sprache', // Sprache
+        'lastlogin': 'Letzter Login', // Last login
+        'pip': 'IP Adresse', // IP Address
+        'steamid': 'Steam Id', // Steam Id
+        'cmdruntil': 'Werbefrei bis', // Commander Until
+        'points': 'Punkte', // Points
+        'vmode': 'Urlaubsmodus', // Vacation Mode
+        'vmodeuntil': 'Vacation mode until', // Vacation mode until
+        'banned': 'Gesperrt', // banned
+        'Pass': 'Passwort', // Password
+        'rhash': 'Revert-Hash', // Revert-Hash
+        'validation': 'Validierung', // Validation
+        'regemail': 'Initiale Email', // Initial email
+        'regdate': 'Registrierungsdatum', // Registration date
+        'commander': 'Commander', // Commander
+        'Admiral': 'Admiral', // Admiral
+        'Engineer': 'Ingenieur', // Engineer
+        'Geologist': 'Geologe', // Geologist
+        'Technocrat': 'Technokrat', // Technocrat
+        'Total Tritium': 'Tritium gesamt', // Total Tritium
+        'banlog': 'Prangerauszug', // Pillory Records
+        'shortnotes': 'Short Notes', // Short Notes
+        'users-sameemail': 'User mit gleicher Emailadresse', // users with same email address
+        'planets': 'Planeten', // Planets
+        'moon': 'Mond', // moon
+        'date': 'Datum', // Date
+        'countedTicks': 'Gezählte Ticks', // Counted Ticks
+        'activity': 'Aktivität' // Activity
+    }, 'fr': {
         'pid': 'ID du joueur', // Player ID
         'ally': 'Alliance', // Alliance
         'class': 'Sélection de classe', // Class Selection
@@ -90,8 +133,7 @@ const keytrans = {
         'date': 'Date', // Date
         'countedTicks': 'Tics comptés', // Counted Ticks
         'activity': 'Activité' // Activity
-    },
-    'es': {
+    }, 'es': {
         'pid': 'ID del jugador', // Player ID
         'ally': 'Alianza', // Alliance
         'class': 'Selección de clase', // Class Selection
@@ -125,8 +167,7 @@ const keytrans = {
         'date': 'Fecha', // Date
         'countedTicks': 'Ticks registrados', // Counted Ticks
         'activity': 'Actividad' // Activity
-    },
-    'it': {
+    }, 'it': {
         'pid': 'ID giocatore', // Player ID
         'ally': 'Alleanza', // Alliance
         'class': 'Seleziona classe', // Class Selection
@@ -162,6 +203,92 @@ const keytrans = {
         'activity': 'Attività' // Activity
     }
 };
+
+'research in progress' : 'rqueue',
+'construction queue - buildings' : 'bqueue',
+'construction queue - fleets' : 'fqueue',
+'size' : 'size',
+'lifeform resources' : 'lfresources',
+'lifeform tech' : 'lfbuildings',
+'selected' : 'lftech',
+'' : ''
+
+const planetkeys = {
+    'en': {
+        'resources': 'resources', // resources
+        'buildings': 'buildings', // buildings
+        'rqueue': 'research in progress', // rqueue
+        'bqueue': 'construction queue - buildings', // bqueue
+        'fqueue': 'construction queue - fleets', // fqueue
+        'size': 'Date', // size
+        'lfresources': 'lifeform resources', // lfresources
+        'lfbuildings': 'lifeform tech', // lfbuildings
+        'lftech': 'selected', // lftech
+        'date': 'Date', // Date
+        '' : ''
+    }, 'de': {
+        'resources': 'Ressourcen', // resources
+        'buildings': 'Gebäude', // buildings
+        'rqueue': 'Laufende Forschung', // rqueue
+        'bqueue': 'Bauliste - Gebäude', // bqueue
+        'fqueue': 'Bauliste - Flotten', // fqueue
+        'size': 'Größe', // size
+        'lfresources': 'Ressourcen der Lebensform ', // lfresources
+        'lfbuildings': 'Technologien der Lebensform ', // lfbuildings
+        'lftech': 'Ausgewählt', // lftech
+        'date': 'Date', // Date
+        '' : ''
+    }, 'fr': {
+        'resources': 'Ressources', // resources
+        'buildings': 'Bâtiments', // buildings
+        'rqueue': 'Recherche en cours', // rqueue
+        'bqueue': 'Liste de construction - Bâtiments', // bqueue
+        'fqueue': 'Liste de construction - Flottes', // fqueue
+        'size': 'Taille', // size
+        'lfresources': 'Ressources de forme de vie ', // lfresources
+        'lfbuildings': 'Technologie de forme de vie ', // lfbuildings
+        'lftech': 'Sélectionné', // lftech
+        'date': 'Date', // Date
+        '' : ''
+    }, 'es': {
+        'resources': 'Recursos', // resources
+        'buildings': 'Edificios', // buildings
+        'rqueue': 'Investigación en curso', // rqueue
+        'bqueue': 'Cola de construcción - Edificios', // bqueue
+        'fqueue': 'Cola de construcción - Escuadrón', // fqueue
+        'size': 'Tamaño', // size
+        'lfresources': 'Recursos de la forma de vida ', // lfresources
+        'lfbuildings': 'Tecnologías de la forma de vida ', // lfbuildings
+        'lftech': 'Selección', // lftech
+        'date': 'Date', // Date
+        '' : ''
+    }, 'it': {
+        'resources': 'Risorse', // resources
+        'buildings': 'Strutture', // buildings
+        'rqueue': 'Ricerca in corso', // rqueue
+        'bqueue': 'Coda costruzione - Strutture', // bqueue
+        'fqueue': 'Coda costruzione - Flotte', // fqueue
+        'size': 'Grandezza', // size
+        'lfresources': 'Risorse Forme di vita ', // lfresources
+        'lfbuildings': 'Tecnologie Forme di vita ', // lfbuildings
+        'lftech': 'Selezionata', // lftech
+        'date': 'Date', // Date
+        '' : ''
+    }
+};
+
+var classMapping = {
+    'resources' : 'resources',
+    'buildings' : 'buildings',
+    'research in progress' : 'rqueue',
+    'construction queue - buildings' : 'bqueue',
+    'construction queue - fleets' : 'fqueue',
+    'size' : 'size',
+    'lifeform resources' : 'lfresources',
+    'lifeform tech' : 'lfbuildings',
+    'selected' : 'lftech',
+    '' : ''
+};
 const translations = {
     'en': {
         'pid': 'Player ID',
@@ -176,8 +303,7 @@ const translations = {
         'date': 'Date',
         'activity': 'Activity',
         'countedTicks': 'Counted Ticks'
-    },
-    'de': {
+    },'de': {
         'pid': 'Player ID',
         'plogin': 'Letzter Login',
         'pip': 'IP Adresse',
@@ -190,8 +316,7 @@ const translations = {
         'date': 'Datum',
         'activity': 'Aktivität',
         'countedTicks': 'Gezählte Ticks'
-    },
-    'fr': {
+    }, 'fr': {
         'pid': 'ID du joueur',
         'plogin': 'Dernier login',
         'pip': 'Adresse IP',
@@ -204,8 +329,7 @@ const translations = {
         'date': 'Date',
         'activity': 'Activité',
         'countedTicks': 'Ticks comptés'
-    },
-    'es': {
+    }, 'es': {
         'pid': 'ID del jugador',
         'plogin': 'Último login',
         'pip': 'Dirección de IP',
@@ -218,8 +342,7 @@ const translations = {
         'date': 'Fecha',
         'activity': 'Actividad',
         'countedTicks': 'Ticks contados'
-    },
-    'it': {
+    }, 'it': {
         'pid': 'ID giocatore',
         'plogin': 'Ultimo login',
         'pip': 'Indirizzo IP',
@@ -238,6 +361,10 @@ const translations = {
 // Function to get translations based on language
 function getTranslation(key, locale) {
     if (!locale) locale = requirelocale
+    if (selectedLang && (!translations[locale] || !translations[locale][key])) locale = selectedLang
+    if (selectedLang && selectedLang !== requirelocale) locale = selectedLang;
+
+    if (ShowlngLog) console.log('locale for keys :', locale);
     if (translations[locale] && translations[locale][key]) {
         return translations[locale][key];
     } else if (translations['en'][key]) { // Fallback to English
@@ -248,14 +375,43 @@ function getTranslation(key, locale) {
 }
 
 // Function to get translations based on language
-function keyTranslation(key, locale) {
+function playerkeyTranslation(key, locale) {
     if (!locale) locale = requirelocale
-    if (!locale && selectedLang) locale = selectedLang
-    if (keytrans[locale] && keytrans[locale][key]) {
-        return keytrans[locale][key];
-    } else if (keytrans['en'][key]) { // Fallback to English
-        return keytrans['en'][key];
+    if (selectedLang && (!playerkeys[locale] || !playerkeys[locale][key])) locale = selectedLang
+    if (selectedLang && selectedLang !== requirelocale) locale = selectedLang;
+
+    if (ShowlngLog) console.log('locale for keys :', locale);
+    if (playerkeys[locale] && playerkeys[locale][key]) {
+        lngkey = playerkeys[locale][key];
+        if (ShowlngLog) console.log('lngkey:', lngkey);
+        return lngkey;
+    } else if (playerkeys['en'][key]) { // Fallback to English
+        lngkey = playerkeys['en'][key];
+        if (ShowlngLog) console.log('lngkey:', lngkey);
+        return lngkey;
     } else {
         return key; // Fallback to key if no translation found
     }
+
+}
+
+// Function to get translations based on language
+function planetkeyTrans(key, locale) {
+    if (!locale) locale = requirelocale
+    if (selectedLang && (!planetkeys[locale] || !planetkeys[locale][key])) locale = selectedLang
+    if (selectedLang && selectedLang !== requirelocale) locale = selectedLang;
+
+    if (ShowlngLog) console.log('locale for keys :', locale);
+    if (planetkeys[locale] && planetkeys[locale][key]) {
+        lngkey = planetkeys[locale][key];
+        if (ShowlngLog) console.log('lngkey:', lngkey);
+        return lngkey;
+    } else if (planetkeys['en'][key]) { // Fallback to English
+        lngkey = planetkeys['en'][key];
+        if (ShowlngLog) console.log('lngkey:', lngkey);
+        return lngkey;
+    } else {
+        return key; // Fallback to key if no translation found
+    }
+
 }
