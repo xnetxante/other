@@ -204,14 +204,6 @@ const playerkeys = {
     }
 };
 
-'research in progress' : 'rqueue',
-'construction queue - buildings' : 'bqueue',
-'construction queue - fleets' : 'fqueue',
-'size' : 'size',
-'lifeform resources' : 'lfresources',
-'lifeform tech' : 'lfbuildings',
-'selected' : 'lftech',
-'' : ''
 
 const planetkeys = {
     'en': {
