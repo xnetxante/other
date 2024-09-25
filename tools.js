@@ -1,6 +1,6 @@
 /* Central User Script Tools
 @description        Tools For All Scripts 
-@version            Version 1.5
+@version            Version 1.0
 @author             Xante
 
 /* Change Log */ {
