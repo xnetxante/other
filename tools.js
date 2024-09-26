@@ -79,6 +79,7 @@ addRow('myTableClass', [
 
 
 
+
 /* Add Table Row dataArray */ const addRow = (tableClass, dataArray, elementType = 'td') => {
     const table = selectTable(tableClass);
     const newRow = table.insertRow();
@@ -96,11 +97,16 @@ addRow('myTableClass', [
                 cell.classList.add(cellData.id.toLowerCase());
             }
 
+            if (cellData.style) {
+                Object.assign(cell.style, cellData.style);  // Apply styles if provided
+            }
+
             newRow.appendChild(cell);
         }
     });
 };
-/* Add Row Cells */ const addRowcells = (tableClass, elementType = 'td', cellContent, cellId = '', colSpan = 1) => {
+
+/* Add Row Cells */ const addRowcells = (tableClass, elementType = 'td', cellContent, cellId = '', colSpan = 1, cellStyles = {}) => {
     const table = selectTable(tableClass);
     const newRow = table.insertRow();
 
@@ -112,16 +118,24 @@ addRow('myTableClass', [
         cell.colSpan = colSpan;
     }
 
+    if (Object.keys(cellStyles).length > 0) {
+        Object.assign(cell.style, cellStyles);  // Apply styles if provided
+    }
+
     newRow.appendChild(cell);
 
-    // If an id is provided, create a second cell with that class
+    // If an id is provided, create a second cell with that class and apply styles
     if (cellId) {
         const idCell = document.createElement(elementType);
         idCell.classList.add(cellId.toLowerCase());
+
+        if (Object.keys(cellStyles).length > 0) {
+            Object.assign(idCell.style, cellStyles);  // Apply styles to id cell as well
+        }
+
         newRow.appendChild(idCell);
     }
 };
-
 /* Add Input Field to Class */ const addInput = (classId, inputType = 'text', placeholder = '') => {
     const container = document.querySelector(`.${classId}`);
     if (container) {
