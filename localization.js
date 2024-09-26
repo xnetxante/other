@@ -1,32 +1,3 @@
-/* Variables */ {
-    var ShowlngLog = false;
-    var selectElement = document.querySelector('select');
-    var requirelocale = window.location.href.match(/-(\w+)\./)[1];
-    var storedLang = localStorage.getItem('selectedLang');
-    var selectedLang;
-
-    if (ShowlngLog) console.log('Initial Check of requirelocale:', requirelocale);
-    if (ShowlngLog) console.log('Initial Check of storedLang:', storedLang);
-
-    // Check if the <select> element is available
-    if (selectElement) {
-        let selectedOption = selectElement.querySelector('option[selected="selected"]') ||
-            selectElement.options[selectElement.selectedIndex];
-        selectedLang = selectedOption ? selectedOption.value : null;
-
-        // Update localStorage if necessary
-        if (storedLang !== selectedLang) {
-            localStorage.setItem('selectedLang', selectedLang);
-            if (ShowlngLog) console.log(`Language stored: ${selectedLang}`);
-        }
-    }
-    else selectedLang = storedLang;
-
-
-    // Reset handling
-    if (selectedLang === "reset") selectedLang = null;
-    if (ShowlngLog) console.log('Final Check of selectedLang:', selectedLang);
-}
 
 
 const playerkeys = {
